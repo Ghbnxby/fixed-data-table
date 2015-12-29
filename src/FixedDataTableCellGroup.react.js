@@ -70,6 +70,7 @@ var FixedDataTableCellGroupImpl = React.createClass({
           columnProps,
           currentPosition,
           key,
+          props.updateRowZIndex,
         );
       }
       currentPosition += columnProps.width;
@@ -99,7 +100,8 @@ var FixedDataTableCellGroupImpl = React.createClass({
     /*number*/ height,
     /*object*/ columnProps,
     /*number*/ left,
-    /*string*/ key
+    /*string*/ key,
+    /*function*/ updateRowZIndex
   ) /*object*/ {
 
     var cellIsResizable = columnProps.isResizable &&
@@ -123,6 +125,7 @@ var FixedDataTableCellGroupImpl = React.createClass({
         width={columnProps.width}
         left={left}
         cell={columnProps.cell}
+        updateRowZIndex={updateRowZIndex}
       />
     );
   },

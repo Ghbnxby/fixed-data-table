@@ -146,6 +146,7 @@ var FixedDataTableCell = React.createClass({
 
     if (props.rowIndex >= 0) {
       cellProps.rowIndex = props.rowIndex;
+      cellProps.updateRowZIndex = props.updateRowZIndex;
     }
 
     var content;

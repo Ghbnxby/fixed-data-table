@@ -128,6 +128,7 @@ var FixedDataTableRowImpl = React.createClass({
         onColumnResize={this.props.onColumnResize}
         rowHeight={this.props.height}
         rowIndex={this.props.index}
+        updateRowZIndex={this.props.updateRowZIndex}
       />;
 
     return (
@@ -221,11 +222,17 @@ var FixedDataTableRow = React.createClass({
     width: PropTypes.number.isRequired,
   },
 
+  getInitialState(){
+    return ({
+      zIndex: (this.props.zIndex ? this.props.zIndex : 0)
+    });
+  },
+
   render() /*object*/ {
     var style = {
       width: this.props.width,
       height: this.props.height,
-      zIndex: (this.props.zIndex ? this.props.zIndex : 0),
+      zIndex: this.state.zIndex,
     };
     translateDOMPositionXY(style, 0, this.props.offsetTop);
 
@@ -237,9 +244,14 @@ var FixedDataTableRow = React.createClass({
           {...this.props}
           offsetTop={undefined}
           zIndex={undefined}
+          updateRowZIndex={this._updateRowZIndex}
         />
       </div>
     );
+  },
+
+  _updateRowZIndex(zIndex){
+    this.setState({zIndex: zIndex});
   },
 });
 
